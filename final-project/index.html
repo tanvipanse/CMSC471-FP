@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Hot Zones (D3)</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+<body>
+  <h2>Hot Zones: Wildfire Risk Map</h2>
+  <p>Year by year, the United States gets plagued by fires. To be more specific, between the years of 1992 and 2015, the US was riddled with over 1.5 million wildfires, <br> but their impact varied dramatically based on location. This series of visualizations is meant to allow users to explore the <em>when</em>, <em>where</em>, and primarily the <strong>why</strong> of American wildfires.
+  <br><br><br><strong><em>The big picture: the U.S. fire landscape.</em></strong> <br><br> As you drag the slider on the bottom, allow the map to take you through the years, and observe the fire concentrations as they occur. <br> Below the map is a legend, which describes the specifics of how color and circle size demonstrate the severity (acres burned) of the fire. <br>Hovering over each circle draws in a tooltip, explaining the when, where, and how of each fire. </p>
+  <svg id="map" width="960" height="600"></svg>
+  <script src="js/script.js" defer></script>
+  <script src="https://unpkg.com/topojson-client@3"></script>
+  <div id="controls" style="margin: 10px 0; text-align: center;">
+    <label for="year-slider">Year: <span id="year-label">2020</span></label><br>
+    <input type="range" id="year-slider" min="1984" max="2020" value="2020" step="1" />
+  </div>
+  <div id="map"></div>
+  <div id="legend" style="margin: 20px; font-family: sans-serif;">
+    <strong>Legend</strong>
+    <div id="color-legend" style="margin-top: 10px;"></div>
+    <div id="size-legend" style="margin-top: 20px;"></div>
+  </div>
+  Now that you’ve had the opportunity to play with the map, we’d like to call something to your attention (if you haven’t already noticed it). <br><br> Wildfires are not random. <br><br> After some examination, you’ll quickly begin to notice crucial patterns.
+  <p>The largest, most severe fires frequently blaze in the west. The southeast sees fires as well, but they are much smaller, and highly concentrated. <br>In certain years, we see particular states light up–for example, observe Oregon in 2012. You’ll notice large red and black circles along the southeastern border. </p>
+  <p>We’ve investigated size, so let’s move on to the cause–what is causing these wildfires to occur? <br><br>Underneath, we have a dynamic bar chart that reveals the major causes of fires each year. It is updated as the map animation is paused on a certain year. <br> <strong>Hit play,</strong> and watch the animation unfold 3 decades worth of wildfires across the country. <em>Do you notice any alarming trends?</em></p>
+  <div id="animation-controls" style="text-align: center; margin-top: 10px;">
+    <button id="play-button">▶ Play</button>
+  </div>
+  <div id="cause-chart-container" style="margin-top: 40px; text-align: center;">
+    <h3>Fire Causes (by Count) for Year: <span id="cause-year-label">2020</span></h3>
+    <svg id="cause-bar-chart" width="800" height="400"></svg>
+  </div>    
+  <p>As you pause on a year, you can <strong>click on any cause</strong> that piques your interest to reveal a <strong>state-by-state heat map</strong> that shows how many fires of that particular cause occurred in that year.<br> Darker colors represent high fire counts, as shown in the key on the left. </p>
+  <div id="heatmap-container" style="text-align: center; margin-top: 40px;">
+    <h3>Heatmap by Cause and State</h3>
+    <svg id="heatmap" width="700" height="250"></svg>
+  </div>  
+  <p id="heatmap-cause-label" style="text-align:center; font-weight: bold; margin-top: 0px;"></p>
+  This final visualization is truly meant to tie the story together. The map and bar chart together paint an easily digestible view of the problem. 
+  <br> But understanding the problem is <em>only the first step</em>. We use this heatmap to demonstrate where targeted interventions can make the biggest difference.
+  <br><br>The viewpoint now shifts from purely asking what happened, to understanding where to ask. This is information that could benefit policymakers and climate activists<br> in their journey to mitigate the wildfires that blaze across the country. The addition of this feature is important as a tool to allow support for <em>decision making</em> and <strong>action.</strong>
+  <div id="tooltip" style="
+    position: absolute;
+    background: white;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 12px;
+    pointer-events: none;
+    opacity: 0;
+    box-shadow: 0px 0px 6px rgba(0,0,0,0.1);
+    text-align: left;
+    z-index: 10;">
+  </div>
+<div id="legend" style="margin: 20px auto; font-family: sans-serif; text-align: center;">
+  <div id="color-legend" style="margin-top: 10px;"></div> 
+  <div id="size-legend" style="margin-top: 20px;"></div>
+</div>
+<p><a href="https://www.kaggle.com/datasets/rtatman/188-million-us-wildfires/code">Kaggle Data Set Source!</a></p>
+<p><a href="https://www.washingtonpost.com/graphics/2020/world/corona-simulator/">Washington Post Inspiration :)</a></p>
+</body>
+</html>

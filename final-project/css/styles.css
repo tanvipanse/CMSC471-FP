@@ -1,0 +1,13 @@
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+  }
+  
+  #map {
+    border: 1px solid #ccc;
+    margin: auto;
+    display: block;
+  }
+  
